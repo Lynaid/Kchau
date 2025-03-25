@@ -56,7 +56,7 @@ try {
                     <td><?php echo htmlspecialchars($product['prijs_per_stuk']); ?></td>
                     <td><?php echo htmlspecialchars($product['omschrijving']); ?></td>
                     <td>
-                        <a href="">Edit</a>
+                    <a href="edit.php?product_code=<?php echo $product['product_code']; ?>">Edit</a>
                         <a href="">Delete</a></td>
                 </tr>
             <?php endforeach; ?>

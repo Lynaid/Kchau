@@ -4,9 +4,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $product_naam = $_POST['product_naam'];
     $prijs_per_stuk = $_POST['prijs_per_stuk'];
     $omschrijving = $_POST['omschrijving'];
+    $categorie = $_POST['categorie'];
 
     try {
-        $sql = "INSERT INTO producten (product_naam, prijs_per_stuk, omschrijving) VALUES (:product_naam, :prijs_per_stuk, :omschrijving)";
+        $sql = "INSERT INTO producten (product_naam, prijs_per_stuk, omschrijving, Categorie) VALUES (:product_naam, :prijs_per_stuk, :omschrijving, :categorie)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':product_naam', $product_naam);
         $stmt->bindParam(':prijs_per_stuk', $prijs_per_stuk);
@@ -38,6 +39,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <label for="omschrijving">Omschrijving:</label>
         <textarea id="omschrijving" name="omschrijving" required></textarea><br><br>
+
+        <label for="categorie">Categorie:</label>
+            <select name="categorie" id="categorie" required>
+                <option value="">-- Selecteer een categorie --</option>
+                <option value="drinken">Drinken</option>
+                <option value="eten">Eten</option>
+                <option value="kleding">Kleding</option>
+                <option value="electronica">Electronica</option>
+            </select>
 
         <button type="submit">Product Toevoegen</button>
     </form>
